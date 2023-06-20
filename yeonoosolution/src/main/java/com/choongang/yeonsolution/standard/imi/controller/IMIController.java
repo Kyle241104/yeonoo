@@ -36,6 +36,7 @@ public class IMIController {
 		return "standard/item-management-info.layout";
 	}
 	
+	// 제품 리스트 
 	@ResponseBody
 	@GetMapping("/imi/items")
 	public List<IMIItemDto> itemList() {
@@ -46,6 +47,7 @@ public class IMIController {
 		return itemList;
 	}
 	
+	// 제품 인서트
 	@ResponseBody
 	@PostMapping("/imi/item")
 	public int itemAdd(@RequestBody IMIItemDto itemInfo) {
@@ -54,10 +56,10 @@ public class IMIController {
 		
 		int itemInsert = imiService.addItem(itemInfo);
 		
-		
 		return itemInsert;
 	}
 	
+	// 창고 리스트 
 	@ResponseBody
 	@GetMapping("/imi/wh")
 	public List<IMIItemDto> whList() {
@@ -69,6 +71,7 @@ public class IMIController {
 		return whList;
 	}
 	
+	// 거래처 리스트 
 	@ResponseBody
 	@GetMapping("/imi/companys")
 	public List<IMICompanyDto> companyList() {
@@ -80,7 +83,7 @@ public class IMIController {
 		return companyList;
 	}
 	
-
+	// 제품 업데이트
 	@ResponseBody
 	@PutMapping("/imi/{itemCode}")
 	public Map<String, Integer> itemModify(@PathVariable("itemCode") String itemCode, @RequestHeader String action, @RequestBody IMIItemDto itemDto) {
@@ -107,6 +110,7 @@ public class IMIController {
 		return resultMap;
 	}
 	
+	// 검색창
 	@ResponseBody
 	@GetMapping("/imi/search/{searchKeyWord}")
 	public List<IMIItemDto> itemSearchList(@PathVariable("searchKeyWord") String searchKeyWord) {

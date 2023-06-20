@@ -19,9 +19,8 @@ public class IMIServiceImpl implements IMIService {
 	private final IMIDao imiDao;
 	
 	@Override
-	public List<IMIItemDto> findItemList() {
-		List<IMIItemDto> itemList = imiDao.selectItemList();
-		// null 값 공백 처리
+	// null 값 공백 처리
+	public void parseNullItems(List<IMIItemDto> itemList){
 		for(IMIItemDto item : itemList) {
 			item.setMemo(item.getMemo() == null ? "" : item.getMemo());
 			item.setItemName(item.getItemName() == null ? "" : item.getItemName());
@@ -30,6 +29,12 @@ public class IMIServiceImpl implements IMIService {
 			item.setPurchasePrice(item.getPurchasePrice() == null ? 0 : item.getPurchasePrice());
 			item.setSalesPrice(item.getSalesPrice() == null ? 0 : item.getSalesPrice());
 		}
+	}
+	
+	@Override
+	public List<IMIItemDto> findItemList() {
+		List<IMIItemDto> itemList = imiDao.selectItemList();
+		parseNullItems(itemList);
 		
 		log.info("selectItemList -> " + itemList);
 		
@@ -82,15 +87,8 @@ public class IMIServiceImpl implements IMIService {
 	@Override
 	public List<IMIItemDto> findItemListBySearchKeyWord(String searchKeyWord) {
 		List<IMIItemDto> searchList = imiDao.selectItemListBySearchKeyWord(searchKeyWord);
-		// null 값 공백 처리
-		for(IMIItemDto item : searchList) {
-			item.setMemo(item.getMemo() == null ? "" : item.getMemo());
-			item.setItemName(item.getItemName() == null ? "" : item.getItemName());
-			item.setStockUnit(item.getStockUnit() == null ? "" : item.getStockUnit());
-			item.setWhCode(item.getWhCode() == null ? "" : item.getWhCode());
-			item.setPurchasePrice(item.getPurchasePrice() == null ? 0 : item.getPurchasePrice());
-			item.setSalesPrice(item.getSalesPrice() == null ? 0 : item.getSalesPrice());
-		}
+		parseNullItems(searchList);
+		
 		return searchList;
 	}
 }

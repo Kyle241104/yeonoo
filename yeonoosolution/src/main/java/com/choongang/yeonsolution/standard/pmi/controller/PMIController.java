@@ -33,6 +33,7 @@ public class PMIController {
 		return "standard/production-management-info.layout";
 	}
 	
+	// 완제품 리스트
 	@ResponseBody
 	@GetMapping("/pmi/product/items")
 	public List<IMIItemDto> productItemList() {
@@ -44,6 +45,7 @@ public class PMIController {
 		return productItemList;
 	}
 	
+	// 반제품 리스트
 	@ResponseBody
 	@GetMapping("/pmi/product/semi-items")
 	public List<IMIItemDto> semiProductItemList() {
@@ -55,6 +57,7 @@ public class PMIController {
 		return semiProductItemList;
 	}
 	
+	// bom 리스트
 	@ResponseBody
 	@GetMapping("/pmi/bom-list/{itemCode}")
 	public List<PMIBomDto> bomList(@PathVariable String itemCode, PMIBomDto bomDto) {
@@ -68,6 +71,7 @@ public class PMIController {
 		return bomList;
 	}
 	
+	// bom 등록
 	@ResponseBody
 	@PostMapping("/pmi/bom")
 	public int bomAdd(@RequestBody PMIBomDto bomDto) {
@@ -79,6 +83,7 @@ public class PMIController {
 		return bomInsert;
 	}
 	
+	// bom 삭제
 	@ResponseBody
 	@DeleteMapping("/pmi/bom")
 	public int bomRemove(@RequestBody PMIBomDto bomDto) {

@@ -27,5 +27,8 @@ public interface IMIService {
 
 	// 검색 결과 리스트
 	List<IMIItemDto> findItemListBySearchKeyWord(String searchKeyWord);
+	
+	// Null 값 공백 처리
+	void parseNullItems(List<IMIItemDto> itemList);
 
 }
