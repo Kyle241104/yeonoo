@@ -14,9 +14,11 @@ yeonoosolution/src/main/java/com/choongang/yeonsolution/standard/ipi
 yeonoosolution/src/main/java/com/choongang/yeonsolution/standard/pmi
 
 Mapper
+
 yeonoosolution/src/main/resources/mappers/Item-management-mapper.xml
 
 CSS/JS
+
 yeonoosolution/src/main/webapp/WEB-INF/tiles/layout/standard/item-management-info.jsp
 
 yeonoosolution/src/main/webapp/WEB-INF/tiles/layout/standard/item-price-info.jsp
@@ -24,6 +26,7 @@ yeonoosolution/src/main/webapp/WEB-INF/tiles/layout/standard/item-price-info.jsp
 yeonoosolution/src/main/webapp/WEB-INF/tiles/layout/standard/production-management-info.jsp
 
 HTML
+
 yeonoosolution/src/main/webapp/WEB-INF/tiles/standard/item-management-info.jsp
 
 yeonoosolution/src/main/webapp/WEB-INF/views/standard/item-management-info.jsp
